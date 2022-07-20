@@ -1,0 +1,100 @@
+META_ARC: "SiamAttn"
+
+BACKBONE:
+    TYPE: "resnet50"
+    KWARGS:
+        used_layers: [0, 1, 2, 3, 4]
+    PRETRAINED: 'pretrained_models/resnet50.model'
+    TRAIN_LAYERS: ['layer2', 'layer3', 'layer4']
+    TRAIN_EPOCH: 10
+    LAYERS_LR: 0.05
+
+ADJUST:
+    ADJUST: true
+    TYPE: "AdjustAllLayer"
+    KWARGS:
+        in_channels: [512, 1024, 2048]
+        out_channels: [256, 256, 256]
+
+RPN:
+    TYPE: 'MultiRPN'
+    KWARGS:
+        anchor_num: 5
+        in_channels: [256, 256, 256]
+        weighted: true
+
+ENHANCE:
+    ENHANCE: true
+
+REFINE:
+    REFINE: true
+
+MASK:
+    MASK: true
+
+ANCHOR:
+    STRIDE: 8
+    RATIOS: [0.33, 0.5, 1, 2, 3]
+    SCALES: [8]
+    ANCHOR_NUM: 5
+
+TRACK:
+    TYPE: 'SiamAttnTracker'
+    PENALTY_K: 0.10
+    WINDOW_INFLUENCE: 0.250
+    LR: 0.450
+    EXEMPLAR_SIZE: 127
+    INSTANCE_SIZE: 255
+    BASE_SIZE: 8
+    CONTEXT_AMOUNT: 0.5
+    MASK_THERSHOLD: 0.2
+    MASK_OUTPUT_SIZE: 64
+    
+TRAIN:
+    EPOCH: 20
+    START_EPOCH: 0
+    BATCH_SIZE: 56 #bs 56 per gpu, total 224
+    ROI_PER_IMG: 16
+    BASE_LR: 0.01
+    CLS_WEIGHT: 1.0
+    LOC_WEIGHT: 0.5
+    REFINE_WEIGHT: 0.5
+    MASK_WEIGHT: 0.2
+    RESUME: ''
+
+    LR:
+        TYPE: 'log'
+        KWARGS:
+            start_lr: 0.005
+            end_lr: 0.0005
+    LR_WARMUP:
+        TYPE: 'step'
+        EPOCH: 5
+        KWARGS:
+            start_lr: 0.001
+            end_lr: 0.005
+            step: 1
+
+DATASET:
+    NAMES:
+    - 'TRACKINGNET_6to11'
+    - 'LASOT'
+#    - 'COCO'
+#    - 'YT-VOS'
+
+    TEMPLATE:
+        SHIFT: 4
+        SCALE: 0.05
+        BLUR: 0.0
+        FLIP: 0.0
+        COLOR: 0.5
+
+    SEARCH:
+        SHIFT: 64
+        SCALE: 0.18
+        BLUR: 0.2
+        FLIP: 0.2
+        COLOR: 0.5
+
+    NEG: 0.2
+    GRAY: 0.0

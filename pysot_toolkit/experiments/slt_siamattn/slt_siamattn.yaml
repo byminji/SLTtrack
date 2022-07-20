@@ -1,0 +1,120 @@
+META_ARC: "SLT-SiamAttn"
+
+BACKBONE:
+    TYPE: "resnet50"
+    TRAIN_LAYERS: ['layer2', 'layer3', 'layer4']
+    TRAIN_EPOCH: 10
+    LAYERS_LR: 0.05
+    KWARGS:
+        used_layers: [0, 1, 2, 3, 4]
+
+ADJUST:
+    ADJUST: true
+    TYPE: "AdjustAllLayer"
+    LR: 1.0
+
+    KWARGS:
+        in_channels: [512, 1024, 2048]
+        out_channels: [256, 256, 256]
+
+RPN:
+    TYPE: 'MultiRPN'
+    LR: 1.0
+
+    KWARGS:
+        anchor_num: 5
+        in_channels: [256, 256, 256]
+        weighted: true
+
+ENHANCE:
+    ENHANCE: true
+
+REFINE:
+    REFINE: true
+
+MASK:
+    MASK: True
+    KWARGS:
+        in_channels: [256, 256, 256, 256]
+
+ANCHOR:
+    STRIDE: 8
+    RATIOS: [0.33, 0.5, 1, 2, 3]
+    SCALES: [8]
+    ANCHOR_NUM: 5
+
+TRACK:
+    TYPE: 'SltSiamAttnTracker'
+    PENALTY_K: 0.10
+    WINDOW_INFLUENCE: 0.250
+    LR: 0.450
+    EXEMPLAR_SIZE: 127
+    INSTANCE_SIZE: 255
+    BASE_SIZE: 8
+    CONTEXT_AMOUNT: 0.5
+    MASK_THERSHOLD: 0.45
+    MASK_OUTPUT_SIZE: 64
+
+TRAIN:
+    EPOCH: 20
+    START_EPOCH: 0
+    NUM_SEQ: 12
+    NUM_FRAMES: 24
+    TEMPLATE_GAP: -1
+
+    REWARD_WEIGHT: 1
+    RL_TRAIN_BACKBONE: True
+    MOMENTUM: 0.0
+    OPTIM: 'adam'
+    GRAD_CLIP: 10.0
+
+    BATCH_SIZE: 96
+    BASE_LR: 0.00001
+    RESUME: ''
+    NUM_WORKERS: 4
+    PRETRAINED: 'siamattn.pth'
+    TEMP: 8.0
+    SIG_EPS: 0.01
+    NO_NEG_LOGIT: False
+
+    CLS_WEIGHT: 1.0
+    LOC_WEIGHT: 0.5
+    REFINE_WEIGHT: 0.5
+    MASK_WEIGHT: 0.2
+    LR:
+        TYPE: 'log'
+        KWARGS:
+            start_lr: 0.005
+            end_lr: 0.0005
+    LR_WARMUP:
+        WARMUP: false
+
+DATASET:
+    VIDEOS_PER_EPOCH: 10000
+    NAMES:
+        - 'TRACKINGNET_ORIG'
+        - 'LASOT_ORIG'
+        - 'COCO_ORIG'
+        - 'YTVOS_ORIG'
+
+    TRACKINGNET_ORIG:
+        NUM_USE: 3000
+
+    LASOT_ORIG:
+        NUM_USE: 3000
+
+    COCO_ORIG:
+        NUM_USE: 2000
+
+    YTVOS_ORIG:
+        NUM_USE: 3000
+
+    SEQUENCE:
+        SHIFT: 0.1
+        SCALE: 0.2
+        BLUR: 0.2
+        COLOR: 0.5
+
+        SAMPLE_MODE: 'random_interval'
+        SAMPLE_PROB: 0.5
+        MAX_INTERVAL: 7

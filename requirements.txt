@@ -1,0 +1,25 @@
+# SLT requirements
+# Usage: pip install -r requirements.txt
+
+# pytracking
+matplotlib
+numpy
+pandas
+tqdm
+opencv-python
+tensorboardX
+tb-nightly
+visdom
+scikit-image
+tikzplotlib
+gdown
+cython
+scipy
+pycocotools
+jpeg4py
+wget
+yacs
+shapely
+
+# pysot
+colorama
