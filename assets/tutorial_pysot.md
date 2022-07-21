@@ -2,17 +2,16 @@
 
 SLT-SiamRPN++ and SLT-SiamAttn are implemented based on PySOT library, which is located in [pysot_toolkit](../pysot_toolkit).
 
-## (Optional) Data Preparation
+## Data Preparation
 If you want to train the baseline SiamRPN++ or SiamAttn by yourself, you should follow the guideline in [PySOT tutorial](https://github.com/STVIR/pysot/blob/master/TRAIN.md) to pre-process the datasets (cropping the original videos to make patches).
 
-If you want to do only sequence-level training, downloading the dataset is sufficient.
-
+If you want to do SLT only, downloading the dataset and specifying the path in your code is sufficient.
 
 ## Training
 
 * Modify [local_config.py](../pysot_toolkit/pysot/core/local_config.py) to set the paths to datasets, results, etc. 
-* Download the baseline model (e.g., siamrpnpp.pth) from [**[Models]**](https://drive.google.com/drive/folders/1gv7dIw6ywS47pjBkDWUrtWjdpjieyD6O?usp=sharing) and save in your local path.
-* You can also train the baseline model by yourself by running the following commands:
+* Download the baseline model (e.g., siamrpnpp.pth) from [**[Models]**](https://drive.google.com/drive/folders/1gv7dIw6ywS47pjBkDWUrtWjdpjieyD6O?usp=sharing) and save it in your local path.
+* (Optional) You can also train the baseline model by yourself by running the following commands:
   ```
   cd pysot_toolkit
   

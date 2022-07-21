@@ -6,8 +6,8 @@ SLT-TransT and SLT-TrDiMP are implemented based on PyTracking library, which is 
 For the detailed usage of LTR library, please refer to [LTR](../ltr/README.md).
 
 * Modify [ltr/admin/local.py](../ltr/admin/local.py) to set the paths to datasets, results, etc. 
-* Download the baseline model (e.g., transt.pth) from [**[Models]**](https://drive.google.com/drive/folders/1gv7dIw6ywS47pjBkDWUrtWjdpjieyD6O?usp=sharing) and save in your local path.
-* You can also train the baseline model by yourself by running the following commands:
+* Download the baseline model (e.g., transt.pth) from [**[Models]**](https://drive.google.com/drive/folders/1gv7dIw6ywS47pjBkDWUrtWjdpjieyD6O?usp=sharing) and save it in your local path.
+* (Optional) You can also train the baseline model by yourself by running the following commands:
   ```
   python ltr/run_training.py transt transt
   ```
