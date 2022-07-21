@@ -3,7 +3,8 @@
 Official implementation of the ECCV 2022 paper **Towards Sequence-Level Training for Visual Tracking** \
 Minji Kim*, Seungkwan Lee*, Jungseul Ok, Bohyung Han, Minsu Cho *(_denotes equal contribution_)
 
-[**Paper**]
+Paper will be appeared soon!
+
 [**[Models]**](https://drive.google.com/drive/folders/1gv7dIw6ywS47pjBkDWUrtWjdpjieyD6O?usp=sharing)
 [**[Raw Results]**](https://drive.google.com/drive/folders/1gplZ_HCeLeK0ouHUKrSsDPyB9r0ReDxl?usp=sharing)
 
@@ -12,12 +13,12 @@ Minji Kim*, Seungkwan Lee*, Jungseul Ok, Bohyung Han, Minsu Cho *(_denotes equal
 
 
 ## Introduction
-### :exclamation: Problem: the training-testing inconsistency in recent trackers
+### :exclamation: Problem: training-testing inconsistency in recent trackers
 ![FLT_Pitfall](assets/flt_pitfall.png)
 **Pitfall of frame-level training for visual tracking:** \
 Training a tracker to better localize a target in each of individual frames of (a) 
 does not necessarily improve actual tracking in the sequence of (b).
-Due to this issue, inconsistency between the loss and the performance is often observed during training as shown in (c).
+Due to this issue, inconsistency between the validation loss and the validation performance is often observed during training as shown in (c).
 <br/>
 
 
@@ -28,7 +29,7 @@ Our sequence-level design of data sampling, learning objective, data augmentatio
 <br/>
 
 
-### :sparkles: Results: improvements on four baselines without modifying model architectures
+### :sparkles: Result: improvements on four baselines without modifying model architectures
 
 |     Tracker (Base → Ours)     |      LaSOT (AUC)       |   TrackingNet (AUC)    |      GOT-10K (AO)       |
 |:-----------------------------:|:----------------------:|:----------------------:|:-----------------------:|
@@ -84,7 +85,7 @@ Models and raw tracking results are provided in [**[Models]**](https://drive.goo
 
 
 ## Citation
-If you find SLT useful in your research, please consider citing:
+If you find SLT useful in your research, please consider citing our paper:
 ```bibtex
 @inproceedings{SLTtrack,
   title={Towards Sequence-Level Training for Visual Tracking},
