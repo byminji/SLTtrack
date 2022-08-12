@@ -1,9 +1,9 @@
 # SLTtrack
 
 Official implementation of the ECCV 2022 paper **Towards Sequence-Level Training for Visual Tracking** \
-Minji Kim*, Seungkwan Lee*, Jungseul Ok, Bohyung Han, Minsu Cho *(_denotes equal contribution_)
+Minji Kim*, Seungkwan Lee*, Jungseul Ok, Bohyung Han, Minsu Cho (_* denotes equal contribution_)
 
-[**[Paper]**](https://arxiv.org/abs/2208.05810)
+[**[Paper]**](https://arxiv.org/pdf/2208.05810.pdf)
 [**[Models]**](https://drive.google.com/drive/folders/1gv7dIw6ywS47pjBkDWUrtWjdpjieyD6O?usp=sharing)
 [**[Raw Results]**](https://drive.google.com/drive/folders/1gplZ_HCeLeK0ouHUKrSsDPyB9r0ReDxl?usp=sharing)
 
