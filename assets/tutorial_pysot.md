@@ -5,7 +5,7 @@ SLT-SiamRPN++ and SLT-SiamAttn are implemented based on PySOT library, which is 
 ## Data Preparation
 If you want to train the baseline SiamRPN++ or SiamAttn by yourself, you should follow the guideline in [PySOT tutorial](https://github.com/STVIR/pysot/blob/master/TRAIN.md) to pre-process the datasets (cropping the original videos to make patches).
 
-If you want to do SLT only, downloading the dataset and specifying the path in your code is sufficient.
+If you want to do SLT only, it is sufficient to download the dataset and specify the local path in your code.
 
 ## Training
 
@@ -15,7 +15,7 @@ If you want to do SLT only, downloading the dataset and specifying the path in y
   ```
   cd pysot_toolkit
   
-  # Specify your gpu numbers for DDP training
+  # Specify GPU numbers for DDP training
   CUDA_VISIBLE_DEVICES=0,1,2,3
   
   # SiamRPN++
