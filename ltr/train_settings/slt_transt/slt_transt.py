@@ -71,7 +71,7 @@ def run(settings):
     params.use_gpu = True
     params.no_neg_logit = False
     params.sig_eps = 0.01
-    params.temp = 2.0
+    params.temp = 4.0
     params.net = NetWithBackbone(net_path='transt.pth',
                                  use_gpu=params.use_gpu)
     actor = SLTTransTActor(net=model, objective=objective, params=params)
