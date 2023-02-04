@@ -29,14 +29,17 @@ For the detailed usage of the pytracking library, please refer to [pytracking](.
   ```
   For example,
   ```
-  python pytracking/run_tracker.py slt_transt slt_transt --datset_name lasot
+  python pytracking/run_tracker.py slt_transt slt_transt --dataset_name lasot
   ```
+  * Tip: run with `--threads [num_threads]` and `--num_gpu [num_gpus]` for multi-gpu multi-threads inference.
+  
+
 * To see the evaluation results, run the following command:
   ```
   python pytracking/show_results.py [tracker_name] [parameter_name] --dataset_name [dataset_name]
   ```
   For example,
   ```
-  python pytracking/show_results.py slt_transt slt_transt --datset_name lasot
+  python pytracking/show_results.py slt_transt slt_transt --dataset_name lasot
   ```
 * To submit the results on evaluation servers (e.g., TrackingNet and GOT-10k), use the scripts in [util_scripts](../pytracking/util_scripts).
